@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Relaxer</title>
+  </head>
+  <body>
+    <h1>SebWebSwiss breathing app inspired by Wim Hof</h1>
+
+    <div class="container" id="container">
+      <div ondblclick="stopingAll()" class="circle"></div>
+
+      <p ondblclick="stopingAll()" id="text"><button id="but"  onclick="start()">Start</button></p><br>
+      <span ondblclick="stopingAll()" id="num"></span>
+
+      <div id="hide" class="pointer-container hide">
+        <span id="circle" class="pointer"></span>
+      </div>
+
+      <div class="gradient-circle"></div>
+   
+    </div>
+    <!-- <button onclick="stopingAll()">stop</button> -->
+    <script src="script.js"></script>
+  </body>
+</html>
