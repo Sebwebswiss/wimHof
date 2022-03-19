@@ -6,8 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
     <title>Relaxer</title>
+   
   </head>
   <body>
+    
+   
     <h1>SebWebSwiss breathing app inspired by Wim Hof</h1>
 
     <div class="container" id="container">
@@ -21,8 +24,25 @@
       </div>
 
       <div class="gradient-circle"></div>
-   
+ 
     </div>
+    <div class="settings hide" id="settings">
+      <form action="">
+        <label >Number of breaths:</label>
+        <select onchange="fontSize();" id="n">
+          <option value="30">30</option>
+          <option value="35">35</option>
+          <option value="40">40</option>
+        </select><br><br>
+      
+        <p class="par2">To stop or reset the counters you need to double click on the circle</p>
+        <button onclick="test4()">Save</button>
+      </form>
+      
+
+    </div>
+    
+    <div id="option" class="option"><button onclick="test3()"><img src="option.svg" alt="settings"></button></div>
     <!-- <button onclick="stopingAll()">stop</button> -->
     <script src="script.js"></script>
   </body>

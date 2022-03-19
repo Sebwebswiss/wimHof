@@ -1,9 +1,16 @@
+if(a==="" || a=== NaN){
+  a=30;
+}
+getFontSize();
 const container = document.getElementById("container");
 const text = document.getElementById("text");
 const num = document.getElementById("num");
 const circle = document.getElementById("circle");
 const hide = document.getElementById("hide");
 const btn = document.getElementById("btn");
+const settings= document.getElementById("settings");
+const option= document.getElementById("option");
+var a;
 let count = 0;
 let count1;
 let circleCount = 0;
@@ -13,7 +20,8 @@ let timeSecond1 = -1;
 var countDown;
 var id;
 var stop;
-var clearInterval;
+
+
 
 const totalTime = 4000;
 const breatheTime = 1700;
@@ -35,18 +43,22 @@ function breathAnimation() {
 }
 
 function start() {
+
   breathAnimation();
   id = setInterval(breathAnimation, totalTime);
+  option.classList.add("hide");
+
 }
 
 function stoping() {
-  if (count > 30) {
+  if (count > a) {
     clearInterval(id);
     clearTimeout(stop);
     hide.classList.add("hide");
     num.innerText = " ";
     text.innerText = " ";
     container.className = "container shrink";
+  
     holdBreath();
   }
 }
@@ -79,7 +91,6 @@ function breathdInHold() {
     timeSecond1++;
     text.innerText = "BREATHD IN and hold 15sec";
     displayTime(timeSecond1);
-    // num.innerText= `00:${timeSecond}`;
     if (timeSecond1 > 17 || timeSecond1 >= 16) {
       clearInterval(count1);
       check();
@@ -113,7 +124,7 @@ function stopingAll() {
   timeSecond = 90;
   timeSecond1 = -1;
   container.className = "container shrink";
-  clearInterval(id);
+   clearInterval(id);
   clearTimeout(stop);
   clearInterval(count1);
   clearInterval(countDown);
@@ -127,4 +138,38 @@ function stopingAll() {
     start();
   };
   text.appendChild(btn);
+  option.classList.remove("hide");
+}
+
+function test3(){
+  container.classList.add("hide");
+  settings.classList.remove("hide");
+  option.classList.add("hide");
+}
+
+function test4(){
+  container.classList.remove("hide");
+settings.classList.add("hide");
+option.classList.remove("hide");
+
+fontSize();
+
+
+}
+
+
+//****************************************************************************************** */
+
+function fontSize() {
+  var select = document.getElementById("n");
+  var listValue = select.options[select.selectedIndex].value;
+  // select.style.fontSize = listValue;
+  localStorage.setItem("ve", listValue);
+}
+
+function getFontSize() {
+  var select = document.getElementById("n");
+  select.value = localStorage.getItem("ve");
+  let strToNbr= parseInt(select.value);
+  a = strToNbr;
 }
