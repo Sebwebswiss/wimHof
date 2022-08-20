@@ -1,64 +1,61 @@
-if(a==="" || a=== NaN){
-  a=30;
-}
-getFontSize();
 const container = document.getElementById("container");
 const text = document.getElementById("text");
 const num = document.getElementById("num");
-const circle = document.getElementById("circle");
 const hide = document.getElementById("hide");
 const btn = document.getElementById("btn");
-const settings= document.getElementById("settings");
-const option= document.getElementById("option");
-var a;
-let count = 0;
-let count1;
-let circleCount = 0;
-let countHold = 0;
-let timeSecond = 90;
-let timeSecond1 = -1;
-var countDown;
-var id;
-var stop;
-
-
-
+const settings = document.getElementById("settings");
+const option = document.getElementById("option");
+let selectNbrBrth = document.getElementById("n");
+let count = 0,
+  circleCount = 0,
+  countHold = 0,
+  timeSecond = 90,
+  timeSecond1 = -1,
+  countDown,
+  id,
+  stop,
+  count1,
+  p,
+  countOfBrthinCircle,
+  countOfBrth,
+  countOfBrth1,
+  dataBreath,
+  dataBreath1;
+  
+//----------------------------------------------------------------------------------------------------
 const totalTime = 4000;
 const breatheTime = 1700;
-// const holdTime = totalTime / 5;
 
+// **************************************************************************************************
+// Funkcije
+//***************************************************************************************************
 function breathAnimation() {
   count++;
   hide.classList.remove("hide");
   text.innerText = "Breathe In!";
   num.innerText = count;
   container.className = "container grow";
-
   stop = setTimeout(() => {
     text.innerText = "Breathe Out!";
     container.className = "container shrink";
   }, breatheTime);
-
   stoping();
 }
 
 function start() {
-
   breathAnimation();
   id = setInterval(breathAnimation, totalTime);
   option.classList.add("hide");
-
 }
 
 function stoping() {
-  if (count > a) {
+  if (count > countOfBrthinCircle) {
     clearInterval(id);
     clearTimeout(stop);
     hide.classList.add("hide");
     num.innerText = " ";
     text.innerText = " ";
     container.className = "container shrink";
-  
     holdBreath();
   }
 }
@@ -107,6 +104,7 @@ function breathdInHold() {
 }
 
 function check() {
+  // funkcija koja provjerava krugove treba update!
   if (circleCount === 0) {
     timeSecond = 105;
   } else if (circleCount === 1) {
@@ -117,6 +115,7 @@ function check() {
 }
 
 function stopingAll() {
+  // finkcija koja sve zausatavalja. -->
   count = 0;
   count1;
   circleCount = 0;
@@ -124,7 +123,7 @@ function stopingAll() {
   timeSecond = 90;
   timeSecond1 = -1;
   container.className = "container shrink";
-   clearInterval(id);
+  clearInterval(id);
   clearTimeout(stop);
   clearInterval(count1);
   clearInterval(countDown);
@@ -132,6 +131,7 @@ function stopingAll() {
   num.innerText = " ";
   text.innerText = " ";
   let btn = document.createElement("button");
+  btn.setAttribute("id", "but");
   btn.innerHTML = "START";
 
   btn.onclick = function () {
@@ -141,35 +141,35 @@ function stopingAll() {
   option.classList.remove("hide");
 }
 
-function test3(){
+//****************************************************************************************** */
+// settings funkcije
+//****************************************************************************************** */
+function settingsBtn() {
   container.classList.add("hide");
   settings.classList.remove("hide");
   option.classList.add("hide");
 }
 
-function test4(){
+function save() {
   container.classList.remove("hide");
-settings.classList.add("hide");
-option.classList.remove("hide");
-
-fontSize();
-
-
+  settings.classList.add("hide");
+  option.classList.remove("hide");
 }
 
+// **************************************************************************************************
+// localStorage
+//***************************************************************************************************
+countOfBrth = localStorage.getItem("dataFromSelect");
+selectNbrBrth.selectedIndex = countOfBrth;
 
-//****************************************************************************************** */
+countOfBrth1 = localStorage.getItem("valueBrth");
+countOfBrthinCircle = parseInt(countOfBrth1);
 
-function fontSize() {
-  var select = document.getElementById("n");
-  var listValue = select.options[select.selectedIndex].value;
-  // select.style.fontSize = listValue;
-  localStorage.setItem("ve", listValue);
-}
 
-function getFontSize() {
-  var select = document.getElementById("n");
-  select.value = localStorage.getItem("ve");
-  let strToNbr= parseInt(select.value);
-  a = strToNbr;
+function breRepeat() {
+  dataBreath = selectNbrBrth.selectedIndex;
+  localStorage.setItem("dataFromSelect", dataBreath);
+  
+  dataBreath1 = selectNbrBrth.options[selectNbrBrth.selectedIndex].value;
+  localStorage.setItem("valueBrth", dataBreath1);
 }
