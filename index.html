@@ -11,7 +11,7 @@
   <body>
     
    
-    <h1>SebWebSwiss breathing app inspired by Wim Hof</h1>
+    <h1>Sébastien Zunec breathing app inspired by Wim Hof</h1>
 
     <div class="container" id="container">
       <div ondblclick="stopingAll()" class="circle"></div>
@@ -28,21 +28,32 @@
     </div>
     <div class="settings hide" id="settings">
       <form action="">
+        <h2>Settings</h2>
         <label >Number of breaths:</label>
-        <select onchange="fontSize();" id="n">
+        <select onchange="breRepeat()" id="n">
+          <option value="3">3</option>
           <option value="30">30</option>
           <option value="35">35</option>
           <option value="40">40</option>
         </select><br><br>
+
+        <label >Number of rounds:</label>
+        <select onchange="breRepeat1()" id="m">
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select><br><br>
       
         <p class="par2">To stop or reset the counters you need to double click on the circle</p>
-        <button onclick="test4()">Save</button>
+        <button class="btnSave" onclick="save()">Save</button>
       </form>
+
+      <label></label>
       
 
     </div>
     
-    <div id="option" class="option"><button onclick="test3()"><img src="option.svg" alt="settings"></button></div>
+    <div id="option" class="option"><button id="but1" onclick="settingsBtn()"><img src="option.svg" alt="settings"></button></div>
     <!-- <button onclick="stopingAll()">stop</button> -->
     <script src="script.js"></script>
   </body>
