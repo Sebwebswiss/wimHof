@@ -46,8 +46,12 @@ filter: invert(100%);
     .par2{
       font-size: 14px;
       padding-bottom: 40px;
+      margin-top: 50px;
     }
-  
+h2{
+  margin-bottom: 90px;
+}
+
 
 
 /* ********************************************************************************************************** */
@@ -132,7 +136,7 @@ span {
   -webkit-animation: rotate 4s linear forwards infinite;
 }
 
-button {
+#but,#but1 {
   background-color: #00806a00;
   font-size: 2em;
   text-transform: uppercase;
@@ -140,6 +144,25 @@ button {
   color: white;
   cursor: pointer;
 }
+
+.btnSave{
+  background-color: #00806a00;
+  color:  rgb(0, 197, 26);
+  border: 2px solid rgb(235, 235, 235);
+  font-size: 1.2em;
+  text-transform: uppercase;
+  padding: 10px 30px 10px 30px;
+  font-weight: 600;
+  
+  cursor: pointer;
+  border-radius:25px ;
+  -webkit-border-radius:25px ;
+  -moz-border-radius:25px ;
+  -ms-border-radius:25px ;
+  -o-border-radius:25px ;
+  margin-bottom: 15px;
+}
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);
@@ -154,6 +177,8 @@ button {
   animation: grow 1.7s linear forwards;
   -webkit-animation: grow 1.7s linear forwards;
 }
+
+
 
 @keyframes grow {
   from {
