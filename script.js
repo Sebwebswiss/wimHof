@@ -9,7 +9,7 @@ let selectNbrBrth = document.getElementById("n");
 let count = 0,
   circleCount = 0,
   countHold = 0,
-  timeSecond = 90,
+  timeSecond = 60,
   timeSecond1 = -1,
   countDown,
   id,
@@ -21,10 +21,10 @@ let count = 0,
   countOfBrth1,
   dataBreath,
   dataBreath1;
-  
+
 //----------------------------------------------------------------------------------------------------
-const totalTime = 4000;
-const breatheTime = 1700;
+const totalTime = 4000; /*4000 normal */
+const breatheTime = 1500; /*1700 normal */
 
 // **************************************************************************************************
 // Funkcije
@@ -106,11 +106,11 @@ function breathdInHold() {
 function check() {
   // funkcija koja provjerava krugove treba update!
   if (circleCount === 0) {
-    timeSecond = 105;
+    timeSecond = 75;
   } else if (circleCount === 1) {
-    timeSecond = 120;
+    timeSecond = 90;
   } else {
-    timeSecond = 135;
+    timeSecond = 105;
   }
 }
 
@@ -120,7 +120,7 @@ function stopingAll() {
   count1;
   circleCount = 0;
   countHold = 0;
-  timeSecond = 90;
+  timeSecond = 60;
   timeSecond1 = -1;
   container.className = "container shrink";
   clearInterval(id);
@@ -159,17 +159,22 @@ function save() {
 // **************************************************************************************************
 // localStorage
 //***************************************************************************************************
-countOfBrth = localStorage.getItem("dataFromSelect");
-selectNbrBrth.selectedIndex = countOfBrth;
+
+if (localStorage.getItem("valueBrth") === null) {
+  breRepeat();
+}
 
 countOfBrth1 = localStorage.getItem("valueBrth");
 countOfBrthinCircle = parseInt(countOfBrth1);
 
+countOfBrth = localStorage.getItem("dataFromSelect");
+selectNbrBrth.selectedIndex = countOfBrth;
 
 function breRepeat() {
-  dataBreath = selectNbrBrth.selectedIndex;
-  localStorage.setItem("dataFromSelect", dataBreath);
-  
   dataBreath1 = selectNbrBrth.options[selectNbrBrth.selectedIndex].value;
   localStorage.setItem("valueBrth", dataBreath1);
+
+  dataBreath = selectNbrBrth.selectedIndex;
+  localStorage.setItem("dataFromSelect", dataBreath);
 }
+
