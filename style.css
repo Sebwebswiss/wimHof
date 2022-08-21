@@ -21,6 +21,7 @@ body {
   display: flex;
   width: 100%;
   justify-content: flex-end;
+  padding-bottom: 30px;
 }
 
 img{
@@ -60,6 +61,7 @@ h1 {
   color: #ded8d8;
   font-weight: bold;
   text-align: center;
+  padding: 0px 15px 0px 15px;
 }
 p {
   font-size: 30px;
@@ -81,8 +83,8 @@ span {
   align-items: center;
   justify-content: center;
   margin: auto;
-  height: 300px;
-  width: 300px;
+  height: 280px;    /*300 normal */
+  width: 280px;   /*300 normal */
   position: relative;
   transform: scale(1);
 }
@@ -93,25 +95,25 @@ span {
   width: 100%;
   border-radius: 50%;
   position: absolute;
-  top: 0;
-  left: 0;
+  /* top: 0; */
+  /* left: 0; */
   z-index: -1;
 }
 
 .gradient-circle {
   background: conic-gradient(
-    #20c1e9 0%,
+    #7df7b3 0%,
     #20c1e9 40%,
     #ff3636 40%,
-    #ff3636 100%
+    #c9812c 100%
   );
-  height: 320px;
-  width: 320px;
+   height: 315px; /*320 normal */
+  width: 315px; /*320 normal */
   z-index: -2;
   border-radius: 50%;
   position: absolute;
-  top: -10px;
-  left: -10px;
+  /* top: -10px; */
+  /* left: -10px; */
 }
 
 .pointer {
@@ -127,10 +129,10 @@ span {
 
 .pointer-container {
   position: absolute;
-  top: -40px;
-  left: 140px;
-  width: 20px;
-  height: 190px;
+  top: -21px; /*40 normal */
+  left: 137px; /*140 normal */
+  width: 5px; /*20 normal */
+  height: 160px;  /*190 normal */
   animation: rotate 4s linear forwards infinite;
   transform-origin: bottom center;
   -webkit-animation: rotate 4s linear forwards infinite;
@@ -173,9 +175,10 @@ span {
   }
 }
 
+/*1.7 normal */
 .container.grow {
-  animation: grow 1.7s linear forwards;
-  -webkit-animation: grow 1.7s linear forwards;
+  animation: grow 1.6s linear forwards;
+  -webkit-animation: grow 1.6s linear forwards;
 }
 
 
@@ -194,9 +197,10 @@ span {
   }
 }
 
+/*2.2 normal */
 .container.shrink {
-  animation: shrink 2.2s linear forwards;
-  -webkit-animation: shrink 2.2s linear forwards;
+  animation: shrink 2.6s linear forwards;
+  -webkit-animation: shrink 2.6s linear forwards;
 }
 
 @keyframes shrink {
