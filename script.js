@@ -6,6 +6,7 @@ const btn = document.getElementById("btn");
 const settings = document.getElementById("settings");
 const option = document.getElementById("option");
 let selectNbrBrth = document.getElementById("n");
+let selectNbrRounds = document.getElementById("m");
 let count = 0,
   circleCount = 0,
   countHold = 0,
@@ -15,11 +16,15 @@ let count = 0,
   id,
   stop,
   count1,
-  p,
   countOfBrthinCircle,
   countOfBrth,
   countOfBrth1,
   dataBreath,
+  dataRound,
+  dataRound1,
+  countOfRound1,
+  countOfRound,
+  countOfRoundCircle,
   dataBreath1;
 
 //----------------------------------------------------------------------------------------------------
@@ -43,6 +48,8 @@ function breathAnimation() {
 }
 
 function start() {
+  //ovdje treba staviti if
+
   breathAnimation();
   id = setInterval(breathAnimation, totalTime);
   option.classList.add("hide");
@@ -83,6 +90,11 @@ function newFunction() {
   breathdInHold();
 }
 
+//---------------------------------------------------------------------------------------------
+let NbrOfRounds = 0;
+let nekibroj = 1;
+//---------------------------------------------------------------------------------------------
+
 function breathdInHold() {
   count1 = setInterval(() => {
     timeSecond1++;
@@ -96,9 +108,13 @@ function breathdInHold() {
       circleCount++;
       text.innerText = "";
       num.innerText = "";
-
-      breathAnimation();
-      id = setInterval(breathAnimation, totalTime);
+      // ovdje treba uvjetovati ponovni pocetak funkcije!
+      if (circleCount != countOfRoundCircle) {
+        breathAnimation();
+        id = setInterval(breathAnimation, totalTime);
+      } else {
+        stopingAll();
+      }
     }
   }, 1000);
 }
@@ -159,7 +175,7 @@ function save() {
 // **************************************************************************************************
 // localStorage
 //***************************************************************************************************
-
+//broj disanja
 if (localStorage.getItem("valueBrth") === null) {
   breRepeat();
 }
@@ -178,3 +194,24 @@ function breRepeat() {
   localStorage.setItem("dataFromSelect", dataBreath);
 }
 
+// broj krugova
+
+if (localStorage.getItem("valueRound") === null) {
+  breRepeat1();
+}
+
+countOfRound1 = localStorage.getItem("valueRound");
+countOfRoundCircle = parseInt(countOfRound1);
+
+countOfRound = localStorage.getItem("dataRound");
+selectNbrRounds.selectedIndex = countOfRound;
+
+function breRepeat1() {
+  dataRound1 = selectNbrRounds.options[selectNbrRounds.selectedIndex].value;
+  localStorage.setItem("valueRound", dataRound1);
+
+  dataRound = selectNbrRounds.selectedIndex;
+  localStorage.setItem("dataRound", dataRound);
+
+
+}
