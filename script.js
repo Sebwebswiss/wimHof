@@ -76,7 +76,7 @@ function displayTime(second) {
 function holdBreath() {
   countDown = setInterval(() => {
     timeSecond--;
-    text.innerText = "Hold your breathd";
+    text.innerText = "hold your breath";
     displayTime(timeSecond);
     if (timeSecond <= 0 || timeSecond < 1) {
       clearInterval(countDown);
